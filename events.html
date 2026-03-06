@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events Calendar | District 10 AA</title>
+    <meta
+      name="description"
+      content="District 10 AA month-view events calendar with links to event details."
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              base: "#24273a",
+              mantle: "#1e2030",
+              crust: "#181926",
+              text: "#cad3f5",
+              subtext0: "#a5adcb",
+              subtext1: "#b8c0e0",
+              surface0: "#363a4f",
+              surface1: "#494d64",
+              blue: "#8aadf4",
+              lavender: "#b7bdf8",
+              sapphire: "#7dc4e4",
+              yellow: "#eed49f"
+            }
+          }
+        }
+      };
+    </script>
+    <style>
+      body {
+        background:
+          radial-gradient(circle at 15% 10%, rgba(138, 173, 244, 0.2), transparent 30%),
+          radial-gradient(circle at 80% 0%, rgba(125, 196, 228, 0.14), transparent 35%),
+          #24273a;
+      }
+    </style>
+  </head>
+  <body class="text-text min-h-screen antialiased">
+    <header class="sticky top-0 z-50 border-b border-surface0/70 bg-mantle/90 backdrop-blur">
+      <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <a href="index.html" class="text-lg font-bold tracking-wide text-lavender">District 10 AA</a>
+        <div class="hidden gap-6 text-sm text-subtext1 md:flex">
+          <a class="transition hover:text-blue" href="index.html#events">Home Events</a>
+          <a class="transition hover:text-blue" href="meetings.html">Meetings</a>
+          <a class="transition hover:text-blue" href="minutes.html">Minutes</a>
+          <a class="transition hover:text-blue" href="contact.html">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="mx-auto max-w-6xl px-6 py-12 md:py-16">
+      <section class="rounded-3xl border border-surface0 bg-mantle/50 p-6 md:p-10">
+        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h1 class="text-3xl font-extrabold text-lavender md:text-4xl">Events Calendar</h1>
+            <p class="mt-2 text-subtext0">Click an event name to open its detail page.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button
+              id="prev-month"
+              class="rounded-xl border border-surface1 bg-surface0/60 px-4 py-2 text-sm font-semibold text-subtext1 transition hover:border-blue hover:text-blue"
+            >
+              Previous
+            </button>
+            <button
+              id="next-month"
+              class="rounded-xl border border-surface1 bg-surface0/60 px-4 py-2 text-sm font-semibold text-subtext1 transition hover:border-blue hover:text-blue"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+
+        <h2 id="calendar-label" class="mt-6 text-xl font-semibold text-yellow"></h2>
+
+        <div class="mt-4 overflow-x-auto">
+          <div class="min-w-[840px]">
+            <div class="grid grid-cols-7 rounded-t-2xl border border-surface0 bg-crust/70 text-center text-xs font-semibold uppercase tracking-wide text-sapphire">
+              <p class="px-2 py-3">Sun</p>
+              <p class="px-2 py-3">Mon</p>
+              <p class="px-2 py-3">Tue</p>
+              <p class="px-2 py-3">Wed</p>
+              <p class="px-2 py-3">Thu</p>
+              <p class="px-2 py-3">Fri</p>
+              <p class="px-2 py-3">Sat</p>
+            </div>
+            <div id="calendar-grid" class="grid grid-cols-7 overflow-hidden rounded-b-2xl border-x border-b border-surface0"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-surface0 bg-crust/80">
+      <div class="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-8 text-sm text-subtext0 md:flex-row md:items-center md:justify-between">
+        <p>District 10 AA</p>
+        <a class="transition hover:text-blue" href="contact.html">Contact Form</a>
+      </div>
+    </footer>
+
+    <script src="assets/js/content-data.js"></script>
+    <script>
+      const content = window.DISTRICT10_CONTENT || {};
+      const events = content.events || [];
+      const calendarLabelEl = document.getElementById("calendar-label");
+      const calendarGridEl = document.getElementById("calendar-grid");
+      const prevButton = document.getElementById("prev-month");
+      const nextButton = document.getElementById("next-month");
+      let viewDate = new Date();
+      viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth(), 1);
+
+      function toLocalDate(dateString) {
+        return new Date(`${dateString}T00:00:00`);
+      }
+
+      function toDateKey(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+      }
+
+      function getDateRangeInMonth(startDate, endDate, monthStart, monthEnd) {
+        const start = startDate > monthStart ? new Date(startDate) : new Date(monthStart);
+        const end = endDate < monthEnd ? new Date(endDate) : new Date(monthEnd);
+        const days = [];
+
+        for (let cursor = new Date(start); cursor <= end; cursor.setDate(cursor.getDate() + 1)) {
+          days.push(new Date(cursor));
+        }
+
+        return days;
+      }
+
+      function renderCalendar() {
+        const year = viewDate.getFullYear();
+        const month = viewDate.getMonth();
+        const monthStart = new Date(year, month, 1);
+        const monthEnd = new Date(year, month + 1, 0);
+        const firstDayOffset = monthStart.getDay();
+        const daysInMonth = monthEnd.getDate();
+        const monthLabel = monthStart.toLocaleDateString("en-US", {
+          month: "long",
+          year: "numeric",
+          timeZone: "America/New_York"
+        });
+
+        calendarLabelEl.textContent = monthLabel;
+
+        const eventsByDate = {};
+        events.forEach((event) => {
+          const eventStart = toLocalDate(event.startDate);
+          const eventEnd = toLocalDate(event.endDate);
+          if (eventEnd < monthStart || eventStart > monthEnd) return;
+
+          const activeDays = getDateRangeInMonth(eventStart, eventEnd, monthStart, monthEnd);
+          activeDays.forEach((day) => {
+            const key = toDateKey(day);
+            if (!eventsByDate[key]) eventsByDate[key] = [];
+            eventsByDate[key].push(event);
+          });
+        });
+
+        const cells = [];
+        for (let i = 0; i < firstDayOffset; i += 1) {
+          cells.push('<div class="min-h-[8rem] border-r border-b border-surface0 bg-base/20 p-2"></div>');
+        }
+
+        for (let day = 1; day <= daysInMonth; day += 1) {
+          const current = new Date(year, month, day);
+          const dateKey = toDateKey(current);
+          const dayEvents = (eventsByDate[dateKey] || []).sort((a, b) => (a.title < b.title ? -1 : 1));
+
+          cells.push(`
+            <div class="min-h-[8rem] border-r border-b border-surface0 bg-mantle/40 p-2">
+              <p class="text-sm font-semibold text-yellow">${day}</p>
+              <div class="mt-2 space-y-1">
+                ${dayEvents
+                  .map(
+                    (event) => `
+                      <a
+                        href="event.html?event=${event.slug}"
+                        class="block rounded-md border border-surface1 bg-base/50 px-2 py-1 text-[11px] leading-tight text-blue transition hover:border-blue hover:text-lavender"
+                        title="${event.title}"
+                      >${event.title}</a>
+                    `
+                  )
+                  .join("")}
+              </div>
+            </div>
+          `);
+        }
+
+        const totalCells = firstDayOffset + daysInMonth;
+        const trailingCells = (7 - (totalCells % 7)) % 7;
+        for (let i = 0; i < trailingCells; i += 1) {
+          cells.push('<div class="min-h-[8rem] border-r border-b border-surface0 bg-base/20 p-2"></div>');
+        }
+
+        calendarGridEl.innerHTML = cells.join("");
+      }
+
+      prevButton.addEventListener("click", () => {
+        viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() - 1, 1);
+        renderCalendar();
+      });
+
+      nextButton.addEventListener("click", () => {
+        viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 1);
+        renderCalendar();
+      });
+
+      renderCalendar();
+    </script>
+  </body>
+</html>

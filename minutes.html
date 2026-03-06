@@ -52,9 +52,10 @@
         <a href="index.html" class="text-lg font-bold tracking-wide text-lavender">District 10 AA</a>
         <div class="hidden gap-6 text-sm text-subtext1 md:flex">
           <a class="transition hover:text-blue" href="index.html#meetings">Meetings</a>
+          <a class="transition hover:text-blue" href="events.html">Events</a>
           <a class="transition hover:text-blue" href="meetings.html">Find a Meeting</a>
           <a class="transition hover:text-blue" href="minutes.html">Minutes</a>
-          <a class="transition hover:text-blue" href="index.html#contact">Contact</a>
+          <a class="transition hover:text-blue" href="contact.html">Contact</a>
         </div>
       </nav>
     </header>
@@ -68,22 +69,19 @@
       </section>
     </main>
 
-    <footer id="contact" class="border-t border-surface0 bg-crust/80">
+    <footer class="border-t border-surface0 bg-crust/80">
       <div class="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-8 text-sm text-subtext0 md:flex-row md:items-center md:justify-between">
         <p>District 10 AA</p>
-        <p>Email: district10@example.org</p>
+        <a class="transition hover:text-blue" href="contact.html">Contact Form</a>
       </div>
     </footer>
 
+    <script src="assets/js/content-data.js"></script>
     <script>
-      const minutesFiles = [
-        { year: 2025, month: "September", monthIndex: 9, file: "meetingMinutes/district10-minutes-september2025.pdf" },
-        { year: 2025, month: "October", monthIndex: 10, file: "meetingMinutes/district10-minutes-october2025.pdf" },
-        { year: 2025, month: "December", monthIndex: 12, file: "meetingMinutes/district10-minutes-december2025.pdf" },
-        { year: 2026, month: "February", monthIndex: 2, file: "meetingMinutes/district10-minutes-february2026.pdf" }
-      ];
-
+      const content = window.DISTRICT10_CONTENT || {};
+      const minutesFiles = content.minutesFiles || [];
       const groupsContainer = document.getElementById("minutes-groups");
+      const currentYear = new Date().getFullYear();
 
       if (minutesFiles.length === 0) {
         groupsContainer.innerHTML =
@@ -97,7 +95,7 @@
 
         const sortedYears = Object.keys(byYear)
           .map(Number)
-          .sort((a, b) => a - b);
+          .sort((a, b) => b - a);
 
         groupsContainer.innerHTML = sortedYears
           .map((year) => {
@@ -107,7 +105,7 @@
                 (item) => `
                   <tr>
                     <td class="px-4 py-3 text-text">${item.month} ${item.year}</td>
-                    <td class="px-4 py-3 text-subtext1">${item.file.split("/").pop()}</td>
+                    <td class="px-4 py-3 text-subtext1 break-words">${item.file.split("/").pop()}</td>
                     <td class="px-4 py-3">
                       <a class="text-blue transition hover:text-lavender" href="${item.file}" target="_blank" rel="noopener noreferrer">Open PDF</a>
                     </td>
@@ -120,12 +118,18 @@
               .join("");
 
             return `
-              <details class="rounded-2xl border border-surface0 bg-mantle/60" ${year === 2025 ? "open" : ""}>
+              <details class="rounded-2xl border border-surface0 bg-mantle/60" ${year === currentYear ? "open" : ""}>
                 <summary class="cursor-pointer list-none px-5 py-4 text-lg font-semibold text-lavender">
                   ${year}
                 </summary>
                 <div class="overflow-x-auto border-t border-surface0">
-                  <table class="min-w-full divide-y divide-surface0 text-sm">
+                  <table class="min-w-[760px] w-full table-fixed divide-y divide-surface0 text-sm">
+                    <colgroup>
+                      <col class="w-[26%]" />
+                      <col class="w-[44%]" />
+                      <col class="w-[15%]" />
+                      <col class="w-[15%]" />
+                    </colgroup>
                     <thead class="bg-crust/80 text-left text-subtext1">
                       <tr>
                         <th class="px-4 py-3 font-semibold">Month</th>
@@ -142,6 +146,7 @@
           })
           .join("");
       }
+
     </script>
   </body>
 </html>

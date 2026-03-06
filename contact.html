@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | District 10 AA</title>
+    <meta
+      name="description"
+      content="Contact District 10 AA through a secure form for questions, comments, or concerns."
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              base: "#24273a",
+              mantle: "#1e2030",
+              crust: "#181926",
+              text: "#cad3f5",
+              subtext0: "#a5adcb",
+              subtext1: "#b8c0e0",
+              surface0: "#363a4f",
+              surface1: "#494d64",
+              blue: "#8aadf4",
+              lavender: "#b7bdf8",
+              sapphire: "#7dc4e4"
+            }
+          }
+        }
+      };
+    </script>
+    <style>
+      body {
+        background:
+          radial-gradient(circle at 15% 10%, rgba(138, 173, 244, 0.2), transparent 30%),
+          radial-gradient(circle at 80% 0%, rgba(125, 196, 228, 0.14), transparent 35%),
+          #24273a;
+      }
+    </style>
+  </head>
+  <body class="text-text min-h-screen antialiased">
+    <header class="sticky top-0 z-50 border-b border-surface0/70 bg-mantle/90 backdrop-blur">
+      <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <a href="index.html" class="text-lg font-bold tracking-wide text-lavender">District 10 AA</a>
+        <div class="hidden gap-6 text-sm text-subtext1 md:flex">
+          <a class="transition hover:text-blue" href="meetings.html">Meetings</a>
+          <a class="transition hover:text-blue" href="events.html">Events</a>
+          <a class="transition hover:text-blue" href="minutes.html">Minutes</a>
+          <a class="font-semibold text-blue" href="contact.html">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="mx-auto max-w-3xl px-6 py-12 md:py-16">
+      <section class="rounded-3xl border border-surface0 bg-mantle/50 p-8 md:p-12">
+        <h1 class="text-3xl font-extrabold text-lavender md:text-4xl">Contact District 10</h1>
+        <p class="mt-2 text-subtext0">
+          Send a question, comment, or concern. Name, email, and phone are optional.
+        </p>
+
+        <form
+          name="district10-contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          action="/contact-success.html"
+          class="mt-8 space-y-4"
+        >
+          <input type="hidden" name="form-name" value="district10-contact" />
+          <p class="hidden">
+            <label>Do not fill this out: <input name="bot-field" /></label>
+          </p>
+
+          <div>
+            <label for="name" class="mb-1 block text-sm font-semibold text-subtext1">Name (optional)</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              class="w-full rounded-xl border border-surface1 bg-base px-4 py-3 text-sm text-text outline-none ring-blue/40 focus:ring"
+            />
+          </div>
+
+          <div>
+            <label for="email" class="mb-1 block text-sm font-semibold text-subtext1">Email (optional)</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              class="w-full rounded-xl border border-surface1 bg-base px-4 py-3 text-sm text-text outline-none ring-blue/40 focus:ring"
+            />
+          </div>
+
+          <div>
+            <label for="phone" class="mb-1 block text-sm font-semibold text-subtext1">Phone (optional)</label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              class="w-full rounded-xl border border-surface1 bg-base px-4 py-3 text-sm text-text outline-none ring-blue/40 focus:ring"
+            />
+          </div>
+
+          <div>
+            <label for="message" class="mb-1 block text-sm font-semibold text-subtext1">Question / Comment / Concern</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="7"
+              required
+              class="w-full rounded-xl border border-surface1 bg-base px-4 py-3 text-sm text-text outline-none ring-blue/40 focus:ring"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="rounded-xl bg-blue px-5 py-3 text-sm font-semibold text-crust transition hover:bg-lavender"
+          >
+            Send Message
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="border-t border-surface0 bg-crust/80">
+      <div class="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-8 text-sm text-subtext0 md:flex-row md:items-center md:justify-between">
+        <p>District 10 AA</p>
+        <a class="transition hover:text-blue" href="contact.html">Contact Form</a>
+      </div>
+    </footer>
+  </body>
+</html>

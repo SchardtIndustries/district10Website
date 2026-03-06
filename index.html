@@ -52,9 +52,9 @@
         <a href="#" class="text-lg font-bold tracking-wide text-lavender">District 10 AA</a>
         <div class="hidden gap-6 text-sm text-subtext1 md:flex">
           <a class="transition hover:text-blue" href="#meetings">Meetings</a>
-          <a class="transition hover:text-blue" href="#events">Events</a>
+          <a class="transition hover:text-blue" href="events.html">Events</a>
           <a class="transition hover:text-blue" href="#resources">Resources</a>
-          <a class="transition hover:text-blue" href="#contact">Contact</a>
+          <a class="transition hover:text-blue" href="contact.html">Contact</a>
         </div>
       </nav>
     </header>
@@ -88,16 +88,7 @@
         </div>
         <div class="rounded-2xl border border-surface0 bg-base/80 p-6">
           <h2 class="text-lg font-semibold text-text">Quick Info</h2>
-          <ul class="mt-4 space-y-3 text-sm text-subtext1">
-            <li>
-              <span class="font-semibold text-green">District Meeting:</span>
-              First Thursday of the month, 7:00 PM at Sewickley Presbyterian Church
-            </li>
-            <li>
-              <span class="font-semibold text-peach">Newsletter:</span>
-              <a class="text-blue transition hover:text-lavender" href="minutes.html">Meeting minutes</a>
-            </li>
-          </ul>
+          <ul id="quick-info-list" class="mt-4 space-y-3 text-sm text-subtext1"></ul>
         </div>
       </section>
 
@@ -116,43 +107,48 @@
 
       <section id="events" class="mt-14">
         <h2 class="text-2xl font-bold text-lavender">Events & Service</h2>
+        <p id="events-month-label" class="mt-2 text-sm text-subtext0"></p>
         <div class="mt-6 rounded-2xl border border-surface0 bg-mantle/60 p-6">
-          <ul class="space-y-4 text-sm text-subtext1">
-            <li><span class="font-semibold text-blue">Workshop:</span> Step Study - March 22</li>
-            <li><span class="font-semibold text-blue">District Assembly:</span> April 9</li>
-            <li><span class="font-semibold text-blue">Volunteer Need:</span> Grapevine/La Viña Coordinator</li>
-          </ul>
+          <div class="mb-3 grid grid-cols-[8rem,1fr] border-b border-surface0 pb-2 text-xs font-semibold uppercase tracking-wide text-sapphire">
+            <p>Date / Time</p>
+            <p>Event</p>
+          </div>
+          <div id="events-list" class="space-y-3 text-sm text-subtext1"></div>
+          <div class="mt-5">
+            <a
+              href="events.html"
+              class="inline-flex rounded-xl border border-surface1 bg-surface0/60 px-4 py-2 text-sm font-semibold text-subtext1 transition hover:border-blue hover:text-blue"
+              >See more...</a
+            >
+          </div>
         </div>
       </section>
 
-      <section id="resources" class="mt-14 grid gap-4 md:grid-cols-3">
-        <a href="#" class="rounded-2xl border border-surface0 bg-mantle/60 p-5 transition hover:border-blue">
-          <h3 class="font-semibold text-text">Newcomer Packet</h3>
-          <p class="mt-2 text-sm text-subtext0">What AA is, how meetings work, and where to start.</p>
-        </a>
-        <a href="#" class="rounded-2xl border border-surface0 bg-mantle/60 p-5 transition hover:border-blue">
-          <h3 class="font-semibold text-text">Literature Links</h3>
-          <p class="mt-2 text-sm text-subtext0">Conference-approved readings and daily reflections.</p>
-        </a>
-        <a href="#" class="rounded-2xl border border-surface0 bg-mantle/60 p-5 transition hover:border-blue">
-          <h3 class="font-semibold text-text">Service Opportunities</h3>
-          <p class="mt-2 text-sm text-subtext0">Current district roles, clean time requirements, and contacts.</p>
-        </a>
+      <section id="resources" class="mt-14">
+        <h2 class="text-2xl font-bold text-lavender">Resources</h2>
+        <div id="resources-list" class="mt-6 grid gap-4 md:grid-cols-3"></div>
       </section>
     </main>
 
-    <footer id="contact" class="border-t border-surface0 bg-crust/80">
+    <footer class="border-t border-surface0 bg-crust/80">
       <div class="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-8 text-sm text-subtext0 md:flex-row md:items-center md:justify-between">
         <p>District 10 AA</p>
-        <p>Email: district10@example.org</p>
+        <a class="transition hover:text-blue" href="contact.html">Contact Form</a>
       </div>
     </footer>
+    <script src="assets/js/content-data.js"></script>
     <script src="assets/js/meetings-data.js"></script>
     <script>
+      const content = window.DISTRICT10_CONTENT || {};
       const dayNames = window.DISTRICT10_DAY_NAMES;
       const meetings = window.DISTRICT10_MEETINGS;
       const today = new Date();
       const todayName = dayNames[today.getDay()];
+      const quickInfoListEl = document.getElementById("quick-info-list");
+      const eventsListEl = document.getElementById("events-list");
+      const resourcesListEl = document.getElementById("resources-list");
+      const eventsMonthLabelEl = document.getElementById("events-month-label");
+      const monthFormat = { month: "short", day: "numeric", year: "numeric", timeZone: "America/New_York" };
 
       document.getElementById("today-label").textContent = todayName + " schedule";
       const servedNeighborhoodsEl = document.getElementById("served-neighborhoods");
@@ -193,6 +189,75 @@
 
       const todayMeetings = meetings.filter((meeting) => meeting.day === todayName);
       const container = document.getElementById("todays-meetings");
+
+      const quickInfo = content.quickInfo || [];
+      quickInfoListEl.innerHTML = quickInfo
+        .map((item) => {
+          if (item.href && item.linkText) {
+            return `<li><span class="font-semibold text-peach">${item.label}:</span> <a class="text-blue transition hover:text-lavender" href="${item.href}">${item.linkText}</a></li>`;
+          }
+          return `<li><span class="font-semibold text-green">${item.label}:</span> ${item.text}</li>`;
+        })
+        .join("");
+
+      const events = content.events || [];
+      const eventsSorted = [...events].sort((a, b) => (a.startDate < b.startDate ? -1 : 1));
+      const currentMonthStart = new Date(today.getFullYear(), today.getMonth(), 1);
+      const currentMonthEnd = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+      const monthYearLabel = currentMonthStart.toLocaleDateString("en-US", {
+        month: "long",
+        year: "numeric",
+        timeZone: "America/New_York"
+      });
+
+      eventsMonthLabelEl.textContent = `${monthYearLabel} district and area service events.`;
+
+      function formatDateRange(event) {
+        const start = new Date(`${event.startDate}T00:00:00`);
+        const end = new Date(`${event.endDate}T00:00:00`);
+        const startText = start.toLocaleDateString("en-US", monthFormat);
+        const endText = end.toLocaleDateString("en-US", monthFormat);
+        return startText === endText ? startText : `${startText} - ${endText}`;
+      }
+
+      const currentMonthEvents = eventsSorted.filter((event) => {
+        const eventStart = new Date(`${event.startDate}T00:00:00`);
+        const eventEnd = new Date(`${event.endDate}T00:00:00`);
+        return eventStart <= currentMonthEnd && eventEnd >= currentMonthStart;
+      });
+
+      eventsListEl.innerHTML = currentMonthEvents.length
+        ? currentMonthEvents
+            .map(
+              (event) => `
+            <article class="grid grid-cols-[8rem,1fr] gap-3 rounded-xl border border-surface0/80 bg-base/30 p-3">
+              <div>
+                <p class="font-semibold text-yellow">${formatDateRange(event)}</p>
+                <p class="mt-1 text-xs text-subtext0">${event.timeText || "Time TBD"}</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-text">${event.title}</h3>
+                ${event.subtitle ? `<p class="mt-1 text-xs text-subtext0">${event.subtitle}</p>` : ""}
+                <p class="mt-1 text-xs text-subtext1">${event.location}</p>
+                <a class="mt-2 inline-flex text-xs font-semibold text-blue transition hover:text-lavender" href="event.html?event=${event.slug}">View Event Details</a>
+              </div>
+            </article>
+          `
+            )
+            .join("")
+        : '<p class="rounded-xl border border-surface0/80 bg-base/30 p-3 text-subtext1">No events listed for this month yet.</p>';
+
+      const resources = content.resources || [];
+      resourcesListEl.innerHTML = resources
+        .map(
+          (resource) => `
+            <a href="${resource.href}" class="rounded-2xl border border-surface0 bg-mantle/60 p-5 transition hover:border-blue">
+              <h3 class="font-semibold text-text">${resource.title}</h3>
+              <p class="mt-2 text-sm text-subtext0">${resource.description}</p>
+            </a>
+          `
+        )
+        .join("");
 
       if (todayMeetings.length === 0) {
         container.innerHTML =
