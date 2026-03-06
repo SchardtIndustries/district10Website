@@ -52,9 +52,9 @@
         <a href="index.html" class="text-lg font-bold tracking-wide text-lavender">District 10 AA</a>
         <div class="hidden gap-6 text-sm text-subtext1 md:flex">
           <a class="transition hover:text-blue" href="index.html#meetings">Meetings</a>
-          <a class="transition hover:text-blue" href="index.html#events">Events</a>
+          <a class="transition hover:text-blue" href="events.html">Events</a>
           <a class="transition hover:text-blue" href="index.html#resources">Resources</a>
-          <a class="transition hover:text-blue" href="index.html#contact">Contact</a>
+          <a class="transition hover:text-blue" href="contact.html">Contact</a>
         </div>
       </nav>
     </header>
@@ -104,10 +104,10 @@
       </section>
     </main>
 
-    <footer id="contact" class="border-t border-surface0 bg-crust/80">
+    <footer class="border-t border-surface0 bg-crust/80">
       <div class="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-8 text-sm text-subtext0 md:flex-row md:items-center md:justify-between">
         <p>District 10 AA</p>
-        <p>Email: district10@example.org</p>
+        <a class="transition hover:text-blue" href="contact.html">Contact Form</a>
       </div>
     </footer>
 
@@ -139,7 +139,6 @@
       const dayFilter = document.getElementById("day-filter");
       const clearFilterButton = document.getElementById("clear-filter");
       const filterStatus = document.getElementById("filter-status");
-
       const dayOptions = [todayName, "All Days", ...dayNames.filter((day) => day !== todayName)];
       dayFilter.innerHTML = dayOptions
         .map((day) => `<option value="${day}">${day}</option>`)
