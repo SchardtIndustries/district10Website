@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meeting Minutes | District 10 AA</title>
+    <meta
+      name="description"
+      content="District 10 AA meeting minutes. View or download monthly PDF files."
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              base: "#24273a",
+              mantle: "#1e2030",
+              crust: "#181926",
+              text: "#cad3f5",
+              subtext0: "#a5adcb",
+              subtext1: "#b8c0e0",
+              surface0: "#363a4f",
+              surface1: "#494d64",
+              surface2: "#5b6078",
+              blue: "#8aadf4",
+              lavender: "#b7bdf8",
+              sapphire: "#7dc4e4",
+              green: "#a6da95",
+              yellow: "#eed49f",
+              peach: "#f5a97f",
+              maroon: "#ee99a0",
+              red: "#ed8796"
+            }
+          }
+        }
+      };
+    </script>
+    <style>
+      body {
+        background:
+          radial-gradient(circle at 15% 10%, rgba(138, 173, 244, 0.2), transparent 30%),
+          radial-gradient(circle at 80% 0%, rgba(125, 196, 228, 0.14), transparent 35%),
+          #24273a;
+      }
+    </style>
+  </head>
+  <body class="text-text min-h-screen antialiased">
+    <header class="sticky top-0 z-50 border-b border-surface0/70 bg-mantle/90 backdrop-blur">
+      <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <a href="index.html" class="text-lg font-bold tracking-wide text-lavender">District 10 AA</a>
+        <div class="hidden gap-6 text-sm text-subtext1 md:flex">
+          <a class="transition hover:text-blue" href="index.html#meetings">Meetings</a>
+          <a class="transition hover:text-blue" href="meetings.html">Find a Meeting</a>
+          <a class="transition hover:text-blue" href="minutes.html">Minutes</a>
+          <a class="transition hover:text-blue" href="index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="mx-auto max-w-6xl px-6 py-12 md:py-16">
+      <section class="rounded-3xl border border-surface0 bg-mantle/50 p-8 md:p-12">
+        <h1 class="text-3xl font-extrabold text-lavender md:text-4xl">Meeting Minutes</h1>
+        <p class="mt-2 text-subtext0">View or download District 10 monthly meeting minutes.</p>
+
+        <div id="minutes-groups" class="mt-6 space-y-4"></div>
+      </section>
+    </main>
+
+    <footer id="contact" class="border-t border-surface0 bg-crust/80">
+      <div class="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-8 text-sm text-subtext0 md:flex-row md:items-center md:justify-between">
+        <p>District 10 AA</p>
+        <p>Email: district10@example.org</p>
+      </div>
+    </footer>
+
+    <script>
+      const minutesFiles = [
+        { year: 2025, month: "September", monthIndex: 9, file: "meetingMinutes/district10-minutes-september2025.pdf" },
+        { year: 2025, month: "October", monthIndex: 10, file: "meetingMinutes/district10-minutes-october2025.pdf" },
+        { year: 2025, month: "December", monthIndex: 12, file: "meetingMinutes/district10-minutes-december2025.pdf" },
+        { year: 2026, month: "February", monthIndex: 2, file: "meetingMinutes/district10-minutes-february2026.pdf" }
+      ];
+
+      const groupsContainer = document.getElementById("minutes-groups");
+
+      if (minutesFiles.length === 0) {
+        groupsContainer.innerHTML =
+          '<div class="rounded-2xl border border-surface0 bg-mantle/60 px-4 py-6 text-center text-subtext1">No minutes uploaded yet. PDFs will appear here.</div>';
+      } else {
+        const byYear = minutesFiles.reduce((acc, item) => {
+          if (!acc[item.year]) acc[item.year] = [];
+          acc[item.year].push(item);
+          return acc;
+        }, {});
+
+        const sortedYears = Object.keys(byYear)
+          .map(Number)
+          .sort((a, b) => a - b);
+
+        groupsContainer.innerHTML = sortedYears
+          .map((year) => {
+            const rows = byYear[year]
+              .sort((a, b) => a.monthIndex - b.monthIndex)
+              .map(
+                (item) => `
+                  <tr>
+                    <td class="px-4 py-3 text-text">${item.month} ${item.year}</td>
+                    <td class="px-4 py-3 text-subtext1">${item.file.split("/").pop()}</td>
+                    <td class="px-4 py-3">
+                      <a class="text-blue transition hover:text-lavender" href="${item.file}" target="_blank" rel="noopener noreferrer">Open PDF</a>
+                    </td>
+                    <td class="px-4 py-3">
+                      <a class="text-blue transition hover:text-lavender" href="${item.file}" download>Download</a>
+                    </td>
+                  </tr>
+                `
+              )
+              .join("");
+
+            return `
+              <details class="rounded-2xl border border-surface0 bg-mantle/60" ${year === 2025 ? "open" : ""}>
+                <summary class="cursor-pointer list-none px-5 py-4 text-lg font-semibold text-lavender">
+                  ${year}
+                </summary>
+                <div class="overflow-x-auto border-t border-surface0">
+                  <table class="min-w-full divide-y divide-surface0 text-sm">
+                    <thead class="bg-crust/80 text-left text-subtext1">
+                      <tr>
+                        <th class="px-4 py-3 font-semibold">Month</th>
+                        <th class="px-4 py-3 font-semibold">File</th>
+                        <th class="px-4 py-3 font-semibold">View</th>
+                        <th class="px-4 py-3 font-semibold">Download</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-surface0 bg-mantle/60">${rows}</tbody>
+                  </table>
+                </div>
+              </details>
+            `;
+          })
+          .join("");
+      }
+    </script>
+  </body>
+</html>

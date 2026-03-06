@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>District 10 AA</title>
+    <meta
+      name="description"
+      content="District 10 AA: meeting schedules, events, resources, and service opportunities."
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              base: "#24273a",
+              mantle: "#1e2030",
+              crust: "#181926",
+              text: "#cad3f5",
+              subtext0: "#a5adcb",
+              subtext1: "#b8c0e0",
+              surface0: "#363a4f",
+              surface1: "#494d64",
+              surface2: "#5b6078",
+              blue: "#8aadf4",
+              lavender: "#b7bdf8",
+              sapphire: "#7dc4e4",
+              green: "#a6da95",
+              yellow: "#eed49f",
+              peach: "#f5a97f",
+              maroon: "#ee99a0",
+              red: "#ed8796"
+            }
+          }
+        }
+      };
+    </script>
+    <style>
+      body {
+        background:
+          radial-gradient(circle at 15% 10%, rgba(138, 173, 244, 0.2), transparent 30%),
+          radial-gradient(circle at 80% 0%, rgba(125, 196, 228, 0.14), transparent 35%),
+          #24273a;
+      }
+    </style>
+  </head>
+  <body class="text-text min-h-screen antialiased">
+    <header class="sticky top-0 z-50 border-b border-surface0/70 bg-mantle/90 backdrop-blur">
+      <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <a href="#" class="text-lg font-bold tracking-wide text-lavender">District 10 AA</a>
+        <div class="hidden gap-6 text-sm text-subtext1 md:flex">
+          <a class="transition hover:text-blue" href="#meetings">Meetings</a>
+          <a class="transition hover:text-blue" href="#events">Events</a>
+          <a class="transition hover:text-blue" href="#resources">Resources</a>
+          <a class="transition hover:text-blue" href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="mx-auto max-w-6xl px-6 py-12 md:py-16">
+      <section class="grid gap-8 rounded-3xl border border-surface0 bg-mantle/50 p-8 md:grid-cols-2 md:p-12">
+        <div>
+          <p class="mb-3 inline-block rounded-full border border-surface1 bg-surface0/70 px-3 py-1 text-xs uppercase tracking-[0.14em] text-sapphire">
+            Alcoholics Anonymous
+          </p>
+          <h1 class="text-4xl font-extrabold leading-tight text-text md:text-5xl">
+            Welcome to District 10
+          </h1>
+          <p class="mt-4 max-w-xl text-subtext1">
+            Find local meetings, district updates, and service opportunities.
+            This site is here to help members and newcomers connect quickly.
+          </p>
+          <p id="served-neighborhoods" class="mt-3 max-w-xl text-sm font-medium text-sapphire"></p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a
+              href="meetings.html"
+              class="rounded-xl bg-blue px-5 py-3 text-sm font-semibold text-crust transition hover:bg-lavender"
+              >Find a Meeting</a
+            >
+            <a
+              href="#resources"
+              class="rounded-xl border border-surface1 bg-surface0/60 px-5 py-3 text-sm font-semibold text-subtext1 transition hover:border-blue hover:text-blue"
+              >Recovery Resources</a
+            >
+          </div>
+        </div>
+        <div class="rounded-2xl border border-surface0 bg-base/80 p-6">
+          <h2 class="text-lg font-semibold text-text">Quick Info</h2>
+          <ul class="mt-4 space-y-3 text-sm text-subtext1">
+            <li>
+              <span class="font-semibold text-green">District Meeting:</span>
+              First Thursday of the month, 7:00 PM at Sewickley Presbyterian Church
+            </li>
+            <li>
+              <span class="font-semibold text-peach">Newsletter:</span>
+              <a class="text-blue transition hover:text-lavender" href="minutes.html">Meeting minutes</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="meetings" class="mt-14">
+        <h2 class="text-2xl font-bold text-lavender">Today&apos;s Meetings</h2>
+        <p class="mt-2 text-subtext0" id="today-label"></p>
+        <div id="todays-meetings" class="mt-6 grid gap-4 md:grid-cols-2"></div>
+        <div class="mt-6">
+          <a
+            href="meetings.html"
+            class="inline-flex rounded-xl border border-surface1 bg-surface0/60 px-5 py-3 text-sm font-semibold text-subtext1 transition hover:border-blue hover:text-blue"
+            >View Full Schedule</a
+          >
+        </div>
+      </section>
+
+      <section id="events" class="mt-14">
+        <h2 class="text-2xl font-bold text-lavender">Events & Service</h2>
+        <div class="mt-6 rounded-2xl border border-surface0 bg-mantle/60 p-6">
+          <ul class="space-y-4 text-sm text-subtext1">
+            <li><span class="font-semibold text-blue">Workshop:</span> Step Study - March 22</li>
+            <li><span class="font-semibold text-blue">District Assembly:</span> April 9</li>
+            <li><span class="font-semibold text-blue">Volunteer Need:</span> Grapevine/La Viña Coordinator</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="resources" class="mt-14 grid gap-4 md:grid-cols-3">
+        <a href="#" class="rounded-2xl border border-surface0 bg-mantle/60 p-5 transition hover:border-blue">
+          <h3 class="font-semibold text-text">Newcomer Packet</h3>
+          <p class="mt-2 text-sm text-subtext0">What AA is, how meetings work, and where to start.</p>
+        </a>
+        <a href="#" class="rounded-2xl border border-surface0 bg-mantle/60 p-5 transition hover:border-blue">
+          <h3 class="font-semibold text-text">Literature Links</h3>
+          <p class="mt-2 text-sm text-subtext0">Conference-approved readings and daily reflections.</p>
+        </a>
+        <a href="#" class="rounded-2xl border border-surface0 bg-mantle/60 p-5 transition hover:border-blue">
+          <h3 class="font-semibold text-text">Service Opportunities</h3>
+          <p class="mt-2 text-sm text-subtext0">Current district roles, clean time requirements, and contacts.</p>
+        </a>
+      </section>
+    </main>
+
+    <footer id="contact" class="border-t border-surface0 bg-crust/80">
+      <div class="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-8 text-sm text-subtext0 md:flex-row md:items-center md:justify-between">
+        <p>District 10 AA</p>
+        <p>Email: district10@example.org</p>
+      </div>
+    </footer>
+    <script src="assets/js/meetings-data.js"></script>
+    <script>
+      const dayNames = window.DISTRICT10_DAY_NAMES;
+      const meetings = window.DISTRICT10_MEETINGS;
+      const today = new Date();
+      const todayName = dayNames[today.getDay()];
+
+      document.getElementById("today-label").textContent = todayName + " schedule";
+      const servedNeighborhoodsEl = document.getElementById("served-neighborhoods");
+
+      function getServedNeighborhoods(items) {
+        const checks = [
+          { label: "Sewickley", pattern: /\bSewickley\b/i },
+          { label: "Moon Township", pattern: /\bMoon(?:\s*Twp\.?)?\b/i },
+          { label: "Kennedy Township", pattern: /\bKennedy(?:\s*Twp\.?)?\b/i },
+          { label: "Robinson Township", pattern: /\bRobinson(?:\s*Twp\.?)?\b/i },
+          { label: "Clinton", pattern: /\bClinton\b/i },
+          { label: "Coraopolis", pattern: /\bCoraopolis\b/i },
+          { label: "Edgeworth", pattern: /\bEdgeworth\b/i }
+        ];
+
+        const haystack = items
+          .map((meeting) => `${meeting.group} ${meeting.location} ${meeting.address}`)
+          .join(" ");
+
+        return checks.filter((entry) => entry.pattern.test(haystack)).map((entry) => entry.label);
+      }
+
+      const neighborhoods = getServedNeighborhoods(meetings);
+      if (neighborhoods.length) {
+        servedNeighborhoodsEl.textContent = `Happily serving ${neighborhoods.join(", ")}.`;
+      } else {
+        servedNeighborhoodsEl.textContent = "Happily serving District 10 communities.";
+      }
+
+      const isIPhone = /iPhone/i.test(navigator.userAgent);
+
+      function getMapUrl(meeting) {
+        const query = encodeURIComponent(`${meeting.location}, ${meeting.address}`);
+        return isIPhone
+          ? `https://maps.apple.com/?q=${query}`
+          : `https://www.google.com/maps/search/?api=1&query=${query}`;
+      }
+
+      const todayMeetings = meetings.filter((meeting) => meeting.day === todayName);
+      const container = document.getElementById("todays-meetings");
+
+      if (todayMeetings.length === 0) {
+        container.innerHTML =
+          '<p class="rounded-2xl border border-surface0 bg-mantle/60 p-5 text-subtext1">No meetings listed for today.</p>';
+      } else {
+        container.innerHTML = todayMeetings
+          .map(
+            (meeting) => `
+            <article class="rounded-2xl border border-surface0 bg-mantle/60 p-5">
+              <h3 class="font-semibold text-text">${meeting.group}</h3>
+              <p class="mt-2 text-sm text-subtext1">${meeting.time} - ${meeting.format}</p>
+              <p class="mt-1 text-sm text-subtext0">${meeting.location}</p>
+              <p class="mt-1 text-sm text-subtext0">${meeting.address}</p>
+              <a
+                class="mt-3 inline-flex text-xs font-semibold text-blue transition hover:text-lavender"
+                href="${getMapUrl(meeting)}"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Open Map</a
+              >
+              ${
+                meeting.notes
+                  ? `<p class="mt-2 text-xs font-semibold uppercase tracking-wide text-sapphire">${meeting.notes}</p>`
+                  : ""
+              }
+            </article>
+          `
+          )
+          .join("");
+      }
+    </script>
+  </body>
+</html>
