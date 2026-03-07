@@ -1,202 +1,177 @@
 window.DISTRICT10_MEETINGS = [
+[
   {
-    day: "Saturday",
-    group: "Sewickley Saturday Morning",
+    day: "Sunday",
+    group: "Hope in Recovery",
     location: "Sewickley Presbyterian Church",
-    address: "414 Grant Street",
+    address: "720 Blackburn Road, Sewickley",
+    time: "7:00 pm",
+    format: "Open, Beginner, Discussion, Accessible",
+    notes: "Fourth Floor Conference Room"
+  },
+  {
+    day: "Monday",
+    group: "Bright Eyes",
+    location: "Zoom Virtual Meeting",
+    address: "ID# 8170495832, PW: 1212",
+    time: "7:00 am",
+    format: "Closed, Discussion",
+    notes: "Virtual meeting"
+  },
+  {
+    day: "Monday",
+    group: "Cory Closed Discussion",
+    location: "United Methodist Church",
+    address: "1205 Ridge Ave, Coraopolis",
+    time: "7:00 pm",
+    format: "Closed, Discussion, Accessible",
+    notes: ""
+  },
+  {
+    day: "Monday",
+    group: "Womens Serenity Place",
+    location: "Sewickley United Methodist Church",
+    address: "337 Broad Street, Sewickley",
+    time: "7:00 pm",
+    format: "Open, Discussion, Accessible",
+    notes: ""
+  },
+  {
+    day: "Monday",
+    group: "Sewickley Beginners",
+    location: "Sewickley Presbyterian Church",
+    address: "Grant & Beaver St, Sewickley",
+    time: "7:15 pm",
+    format: "Open, Beginner, Discussion",
+    notes: ""
+  },
+  {
+    day: "Monday",
+    group: "It's All About Me",
+    location: "Hebron Presbyterian Church",
+    address: "1767 Rt. 30, Clinton",
+    time: "7:30 pm",
+    format: "Open, Discussion, Accessible",
+    notes: ""
+  },
+  {
+    day: "Monday",
+    group: "Sewickley Monday Night",
+    location: "Grant & Beaver St, Sewickley",
+    address: "Sewickley Presbyterian Church",
+    time: "8:30 pm",
+    format: "Open, Speaker",
+    notes: "Gathering Room"
+  },
+  {
+    day: "Tuesday",
+    group: "New Beginners",
+    location: "St. Margaret Mary",
+    address: "807 Beaver Grade Road",
+    time: "7:00 pm",
+    format: "Closed, Discussion",
+    notes: "Dompka Education Center, 2nd Floor"
+  },
+  {
+    day: "Tuesday",
+    group: "Recovery in Real Life",
+    location: "Sewickley United Methodist Church",
+    address: "337 Broad Street, Sewickley",
+    time: "7:00 pm",
+    format: "Closed, Discussion, Accessible",
+    notes: ""
+  },
+  {
+    day: "Wednesday",
+    group: "Coraopolis",
+    location: "United Methodist Church",
+    address: "1205 Ridge Ave, Coraopolis",
+    time: "6:45 pm",
+    format: "Open, Beginner, Discussion",
+    notes: ""
+  },
+  {
+    day: "Wednesday",
+    group: "Moon Big Book Discussion",
+    location: "AC Hotel",
+    address: "987 Beaver Grade Road",
+    time: "7:00 pm",
+    format: "Closed, Big Book, Discussion, Accessible",
+    notes: "Back door under pavilion"
+  },
+  {
+    day: "Wednesday",
+    group: "Sewickley Joe & Charlie",
+    location: "Sewickley Presbyterian Church",
+    address: "Grant & Beaver St, Sewickley",
+    time: "7:30 pm",
+    format: "Closed, Big Book, Discussion",
+    notes: ""
+  },
+  {
+    day: "Wednesday",
+    group: "Coraopolis",
+    location: "United Methodist Church",
+    address: "1205 Ridge Ave, Coraopolis",
+    time: "8:00 pm",
+    format: "Open, Discussion",
+    notes: ""
+  },
+  {
+    day: "Thursday",
+    group: "Sewickley Edgeworth",
+    location: "Sewickley Presbyterian Church",
+    address: "Grant & Beaver St, Sewickley",
+    time: "7:00 pm",
+    format: "Closed, Discussion",
+    notes: "Campbell Room"
+  },
+  {
+    day: "Thursday",
+    group: "Airport",
+    location: "Sharon Presbyterian Church",
+    address: "522 Carnot Road, Coraopolis",
+    time: "7:00 pm",
+    format: "Open, Speaker, Accessible",
+    notes: ""
+  },
+  {
+    day: "Friday",
+    group: "Friday AM Discussion",
+    location: "St. Margaret Mary",
+    address: "807 Beaver Grade Road, Coraopolis",
     time: "10:00 am",
-    format: "Closed Big Book Discussion",
+    format: "Open, Discussion",
+    notes: "Dompka Education Center, 2nd Floor"
+  },
+  {
+    day: "Friday",
+    group: "Sewickley Friday Beginners",
+    location: "Sewickley United Methodist Church",
+    address: "337 Broad Street, Sewickley",
+    time: "6:30 pm",
+    format: "Open, Beginner, Discussion",
     notes: ""
   },
   {
     day: "Saturday",
-    group: "Robinson Twp/Kennedy Saturday Reflection",
-    location: "Ascension Lutheran Church",
-    address: "1290 Silver Lane",
-    time: "10:30 am",
-    format: "Closed Discussion",
+    group: "Sewickley Saturday Morning",
+    location: "Sewickley Presbyterian Church",
+    address: "Grant & Beaver St, Sewickley",
+    time: "10:00 am",
+    format: "Closed, Big Book, Discussion",
     notes: ""
   },
   {
     day: "Saturday",
     group: "Clinton Saturday Night",
     location: "Hebron Presbyterian Church",
-    address: "Rt. 30",
+    address: "1767 Rt. 30, Clinton",
     time: "7:30 pm",
-    format: "Open Discussion",
-    notes: "1st Week Open Speaker"
-  },
-  {
-    day: "Sunday",
-    group: "Sewickley Valley Hospital (WC) (WB)",
-    location: "Heritage Valley Sewickley",
-    address: "720 Blackburn Road",
-    time: "8:00 pm",
-    format: "Open Discussion",
-    notes: "Enter on Broad Street, meeting in cafeteria"
-  },
-  {
-    day: "Monday",
-    group: "Sewickley (WC)",
-    location: "St. Stephens Church - Christy House",
-    address: "Frederick Avenue & Walnut Street",
-    time: "7:00 am",
-    format: "Closed Discussion",
+    format: "Open, Discussion, Accessible",
     notes: ""
-  },
-  {
-    day: "Monday",
-    group: "Sewickley Women's Serenity Place (WC)",
-    location: "St. Stephens Church",
-    address: "Frederick Avenue & Broad Street",
-    time: "7:00 pm",
-    format: "Open Discussion",
-    notes: ""
-  },
-  {
-    day: "Monday",
-    group: "Moon Discussion",
-    location: "Sharon Presbyterian Church",
-    address: "522 Carnot Road, Room 202",
-    time: "7:00 pm",
-    format: "Closed Discussion",
-    notes: "Last Week Big Book"
-  },
-  {
-    day: "Monday",
-    group: "Sewickley Beginners (WC)",
-    location: "Sewickley Presbyterian Church",
-    address: "414 Grant Street",
-    time: "7:15 pm",
-    format: "Open Discussion",
-    notes: ""
-  },
-  {
-    day: "Monday",
-    group: "Clinton It's All About Me",
-    location: "Hebron Presbyterian Church",
-    address: "Rt. 30",
-    time: "7:30 pm",
-    format: "Big Book Open Discussion",
-    notes: ""
-  },
-  {
-    day: "Monday",
-    group: "Kennedy Twp. Group",
-    location: "Kennedy First Alliance Church",
-    address: "941 McCoy Road",
-    time: "8:00 pm",
-    format: "Open Discussion",
-    notes: ""
-  },
-  {
-    day: "Monday",
-    group: "Sewickley (WC)",
-    location: "Sewickley Presbyterian Church",
-    address: "414 Grant Street",
-    time: "8:30 pm",
-    format: "Open Speaker",
-    notes: ""
-  },
-  {
-    day: "Tuesday",
-    group: "Moon Twp. New Beginning (WC)",
-    location: "St. Margaret Mary Church (School)",
-    address: "807 Beaver Grade Road",
-    time: "8:00 pm",
-    format: "Closed Discussion",
-    notes: ""
-  },
-  {
-    day: "Tuesday",
-    group: "Sewickley Recovery in Real Life (WC)",
-    location: "Sewickley United Methodist Church",
-    address: "Broad & Thorn Street",
-    time: "8:00 pm",
-    format: "Closed Discussion",
-    notes: ""
-  },
-  {
-    day: "Wednesday",
-    group: "Sewickley (WC)",
-    location: "St. Stephens Church - Christy House",
-    address: "Frederick Avenue & Walnut Street",
-    time: "7:00 am",
-    format: "Closed Discussion",
-    notes: ""
-  },
-  {
-    day: "Wednesday",
-    group: "Sewickley Living in Recovery (WC)",
-    location: "Sewickley Presbyterian Church",
-    address: "414 Grant Street",
-    time: "7:30 pm",
-    format: "Closed Discussion",
-    notes: "No slips signed"
-  },
-  {
-    day: "Wednesday",
-    group: "Coraopolis Group (WC)",
-    location: "Coraopolis United Methodist Church",
-    address: "1205 Ridge Avenue",
-    time: "8:30 pm",
-    format: "Open Speaker",
-    notes: ""
-  },
-  {
-    day: "Thursday",
-    group: "Moon Twp. Stoops Ferry (WC)",
-    location: "Church of Nazarene",
-    address: "Stoops Ferry & Shafer Road",
-    time: "4:00 pm",
-    format: "Closed Discussion",
-    notes: ""
-  },
-  {
-    day: "Thursday",
-    group: "Edgeworth/Sewickley",
-    location: "Grace Anglican Episcopal Church",
-    address: "325 Church Lane",
-    time: "7:30 pm",
-    format: "Closed Discussion",
-    notes: ""
-  },
-  {
-    day: "Thursday",
-    group: "Airport Group (WC)",
-    location: "Sharon Presbyterian Church",
-    address: "522 Carnot Road",
-    time: "7:15 pm",
-    format: "Beginner Meeting",
-    notes: "8:30 pm Open Speaker"
-  },
-  {
-    day: "Friday",
-    group: "Sewickley (WC)",
-    location: "St. Stephens Church - Christy House",
-    address: "Frederick Avenue & Walnut Street",
-    time: "7:00 am",
-    format: "Closed Discussion",
-    notes: ""
-  },
-  {
-    day: "Friday",
-    group: "Moon Friday AM Discussion (WC)",
-    location: "St. Margaret Mary Church (School)",
-    address: "807 Beaver Grade Road",
-    time: "10:00 am",
-    format: "Open Discussion",
-    notes: "4th Week Closed Step"
-  },
-  {
-    day: "Friday",
-    group: "Sewickley Friday Night Live (WC)",
-    location: "St. James Catholic Church",
-    address: "Broad & Walnut Street",
-    time: "7:15 pm",
-    format: "Closed Beginner",
-    notes: "8:30 pm Open Speaker"
   }
+]
 ];
 
 window.DISTRICT10_DAY_NAMES = [
