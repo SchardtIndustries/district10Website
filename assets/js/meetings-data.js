@@ -1,5 +1,4 @@
 window.DISTRICT10_MEETINGS = [
-[
   {
     day: "Sunday",
     group: "Hope in Recovery",
@@ -171,7 +170,6 @@ window.DISTRICT10_MEETINGS = [
     format: "Open, Discussion, Accessible",
     notes: ""
   }
-]
 ];
 
 window.DISTRICT10_DAY_NAMES = [
