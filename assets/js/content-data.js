@@ -70,6 +70,48 @@ window.DISTRICT10_CONTENT = {
         "Dollars & Dedication - Strengthening Your Recovery Through Service"
       ],
       pdfUrl: "https://wpaarea60.org/wp-content/uploads/2026/01/March-Workshop-Flyer-2026.pdf"
+    },
+    {
+      slug: "walking-the-red-road-spring-gathering-2026",
+      title: "Walking the Red Road Spring Gathering",
+      subtitle: "Category: Other",
+      startDate: "2026-05-02",
+      endDate: "2026-05-02",
+      timeText: "12:30 AM - 4:00 PM",
+      location: "I.S. and Gertrude Sahli Nature Park",
+      address: "194 McKinley Rd, Beaver Falls, PA 15010",
+      details: [
+        "Category: Other"
+      ],
+      imageUrl: "https://wpaarea60.org/wp-content/uploads/2026/04/IMG_20260328_083448-480x600.jpg"
+    },
+    {
+      slug: "cook-forest-conference-spring-2026",
+      title: "Cook Forest Conference Spring 2026",
+      subtitle: "Spring Conference",
+      startDate: "2026-05-15",
+      endDate: "2026-05-17",
+      timeText: "Weekend Event",
+      location: "Cook Forest Conference",
+      address: "See organizer website for venue details",
+      details: [
+        "Spring Conference: May 15, 16, and 17, 2026"
+      ],
+      websiteUrl: "https://www.cookforestconference.org/"
+    },
+    {
+      slug: "ypaa-101-2026",
+      title: "YPAA 101",
+      subtitle: "Young People in AA event",
+      startDate: "2026-05-31",
+      endDate: "2026-05-31",
+      timeText: "12:00 PM - 4:00 PM",
+      location: "Altoona, PA",
+      address: "827 19th Street, Altoona, PA 16602",
+      details: [
+        "YPAA 101"
+      ],
+      imageUrl: "https://wpaarea60.org/wp-content/uploads/2026/04/ypaa101-768x994.jpg"
     }
   ],
   resources: [
@@ -119,6 +161,12 @@ window.DISTRICT10_CONTENT = {
       month: "March",
       monthIndex: 3,
       file: "meetingMinutes/district10-minutes-march-2026.pdf"
+    },
+    {
+      year: 2026,
+      month: "April",
+      monthIndex: 4,
+      file: "meetingMinutes/district10-minutes-april2026.pdf"
     }
   ]
 };

@@ -122,6 +122,7 @@
               <div class="mt-2 flex flex-wrap gap-3">
                 ${event.websiteUrl ? `<a class="text-sm font-semibold text-blue transition hover:text-lavender" href="${event.websiteUrl}" target="_blank" rel="noopener noreferrer">Event Website</a>` : ""}
                 ${event.pdfUrl ? `<a class="text-sm font-semibold text-blue transition hover:text-lavender" href="${event.pdfUrl}" target="_blank" rel="noopener noreferrer">Open Flyer PDF</a>` : ""}
+                ${event.imageUrl ? `<a class="text-sm font-semibold text-blue transition hover:text-lavender" href="${event.imageUrl}" target="_blank" rel="noopener noreferrer">Open Flyer Image</a>` : ""}
               </div>
             </div>
           </div>
@@ -151,6 +152,23 @@
                     title="${event.title} Flyer PDF"
                     loading="lazy"
                   ></iframe>
+                </div>
+              `
+              : ""
+          }
+
+          ${
+            event.imageUrl
+              ? `
+                <div class="mt-6 rounded-2xl border border-surface0 bg-base/50 p-5">
+                  <h2 class="text-lg font-semibold text-text">Flyer Image</h2>
+                  <p class="mt-2 text-sm text-subtext0">Open the image in a new tab from the links section above for full size.</p>
+                  <img
+                    class="mt-4 max-h-[900px] w-full rounded-xl border border-surface0 bg-crust object-contain"
+                    src="${event.imageUrl}"
+                    alt="${event.title} flyer image"
+                    loading="lazy"
+                  />
                 </div>
               `
               : ""
